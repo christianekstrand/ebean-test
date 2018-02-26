@@ -23,7 +23,7 @@ public class Parent {
     private UUID id;
     private String name;
     @PrivateOwned
-    @OneToMany(cascade = CascadeType.ALL)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Child> children;
     @UpdatedTimestamp
     private Date lastUpdated;

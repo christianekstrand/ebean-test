@@ -14,12 +14,13 @@
 	<targetJdk>1.8</targetJdk>
 	<log4j.version>2.8.2</log4j.version>
 	<maven.build.timestamp.format>yyyyMMddHHmmsss</maven.build.timestamp.format>
+	<kotlin.version>1.2.21</kotlin.version>
     </properties>
     <dependencies>
 	<dependency>
 	    <groupId>io.ebean</groupId>
 	    <artifactId>ebean</artifactId>
-	    <version>11.9.1</version>
+	    <version>11.10.1</version>
 	</dependency>
 	<dependency>
 	    <groupId>io.ebean</groupId>
@@ -68,8 +69,31 @@
 	    <artifactId>log4j-jcl</artifactId>
 	    <version>${log4j.version}</version>
 	</dependency>
+	<dependency>
+	    <groupId>org.jetbrains.kotlin</groupId>
+	    <artifactId>kotlin-stdlib-jre8</artifactId>
+	    <version>${kotlin.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.jetbrains.kotlin</groupId>
+	    <artifactId>kotlin-stdlib-jre7</artifactId>
+	    <version>${kotlin.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.jetbrains.kotlin</groupId>
+	    <artifactId>kotlin-stdlib</artifactId>
+	    <version>${kotlin.version}</version>
+	</dependency>
+	<dependency>
+	    <groupId>org.jetbrains.kotlin</groupId>
+	    <artifactId>kotlin-test-junit</artifactId>
+	    <version>${kotlin.version}</version>
+	    <scope>test</scope>
+	</dependency>
     </dependencies>
     <build>
+	<sourceDirectory>${project.basedir}/src/main/kotlin</sourceDirectory>
+	<testSourceDirectory>${project.basedir}/src/test/kotlin</testSourceDirectory>
 	<plugins>
 	    <plugin>
 		<!-- ebean enhancements -->
@@ -96,6 +120,31 @@
 		<configuration>
 		    <source>1.8</source>
 		    <target>1.8</target>
+		</configuration>
+	    </plugin>
+	    <plugin>
+		<artifactId>kotlin-maven-plugin</artifactId>
+		<groupId>org.jetbrains.kotlin</groupId>
+		<version>${kotlin.version}</version>
+		<executions>
+		    <execution>
+			<id>compile</id>
+			<phase>process-sources</phase>
+			<goals>
+			    <goal>compile</goal>
+			</goals>
+		    </execution>
+		    <execution>
+			<id>test-compile</id>
+			<phase>test-compile</phase>
+			<goals>
+			    <goal>test-compile</goal>
+			</goals>
+		    </execution>
+		</executions>
+		<configuration>
+		    <apiVersion>1.1</apiVersion>
+		    <jvmTarget>1.8</jvmTarget>
 		</configuration>
 	    </plugin>
 	</plugins>
