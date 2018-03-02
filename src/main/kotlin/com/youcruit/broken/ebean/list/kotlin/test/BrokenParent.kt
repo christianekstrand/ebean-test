@@ -1,5 +1,6 @@
 package com.youcruit.ebean.list.kotlin.test
 
+import com.youcruit.broken.ebean.list.kotlin.test.TypeEnum
 import io.ebean.annotation.CreatedTimestamp
 import io.ebean.annotation.DbArray
 import io.ebean.annotation.UpdatedTimestamp
@@ -22,5 +23,6 @@ class BrokenParent(
         @Version
         val version: Long? = null,
         @DbArray
-        var parentTypes: Set<ParentType>
+        var parentTypes: Set<ParentType>,
+        val type: TypeEnum
 )

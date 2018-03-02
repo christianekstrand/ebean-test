@@ -1,6 +1,7 @@
 
+import com.youcruit.broken.ebean.list.kotlin.test.TypeEnum
+import com.youcruit.broken.ebean.list.kotlin.test.TypeEnumScalarType
 import com.youcruit.ebean.list.kotlin.test.BrokenParent
-import com.youcruit.ebean.list.kotlin.test.Parent
 import com.youcruit.ebean.list.kotlin.test.ParentType
 import io.ebean.EbeanServer
 import io.ebean.EbeanServerFactory
@@ -21,7 +22,7 @@ class BrokenDBArrayTest {
         config = ServerConfig()
         config.name = "youcruit-test"
         config.dataSourceConfig.url = "jdbc:h2:mem:test;DB_CLOSE_DELAY=-1"
-        config.classes = listOf(BrokenParent::class.java)
+        config.classes = listOf(BrokenParent::class.java, TypeEnumScalarType::class.java, TypeEnum::class.java)
         config.dataSourceConfig.username = "sa"
         config.dataSourceConfig.password = "blank"
         config.dataSourceConfig.driver = Driver::class.java.name
@@ -34,7 +35,7 @@ class BrokenDBArrayTest {
 
     @Test
     fun testSetup() {
-        val parent = Parent(parentTypes = mutableSetOf(ParentType.FATHER))
+        val parent = BrokenParent(parentTypes = mutableSetOf(ParentType.FATHER), type = TypeEnum.ONE)
         server.save(parent)
         assertNotNull(parent.id)
     }
