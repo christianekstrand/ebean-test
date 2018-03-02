@@ -14,18 +14,18 @@
 	<targetJdk>1.8</targetJdk>
 	<log4j.version>2.8.2</log4j.version>
 	<maven.build.timestamp.format>yyyyMMddHHmmsss</maven.build.timestamp.format>
-	<kotlin.version>1.2.21</kotlin.version>
+	<kotlin.version>1.2.30</kotlin.version>
     </properties>
     <dependencies>
 	<dependency>
 	    <groupId>io.ebean</groupId>
 	    <artifactId>ebean</artifactId>
-	    <version>11.10.1</version>
+	    <version>11.12.1</version>
 	</dependency>
 	<dependency>
 	    <groupId>io.ebean</groupId>
 	    <artifactId>ebean-annotation</artifactId>
-	    <version>3.6</version>
+	    <version>3.8</version>
 	</dependency>
 	<dependency>
 	    <groupId>com.h2database</groupId>
@@ -104,7 +104,7 @@
 		<configuration>
 		    <tiles>
 			<tile>org.avaje.tile:java-compile:1.1</tile>
-			<tile>io.ebean.tile:enhancement:5.2</tile>
+			<tile>io.ebean.tile:enhancement:5.3</tile>
 		    </tiles>
 		</configuration>
 	    </plugin>
